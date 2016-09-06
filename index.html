@@ -215,49 +215,12 @@
                                     
                                         <div class="article-entry" itemprop="articleBody">
                                             
-                                                    <!--02-->
-                                                    <p class="toc-button">目录</p>
-<div id="toc" class="toc-article" style="display:none;">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#升级依赖"><span class="toc-number">1.</span> <span class="toc-text">升级依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vuex升级"><span class="toc-number">2.</span> <span class="toc-text">vuex升级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改action"><span class="toc-number">2.1.</span> <span class="toc-text">修改action</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改vuex连接到组件的方式"><span class="toc-number">2.2.</span> <span class="toc-text">修改vuex连接到组件的方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更详细的教程"><span class="toc-number">3.</span> <span class="toc-text">更详细的教程</span></a></li></ol>
-</div>
-<script>
-    $(function(){
 
-        var width = document.body.scrollWidth;
-        if (width <=550) {
-             $(".toc-button").css("display","none");
-        }
-        $(".toc-button").hover(function(){
-            var top = $(this).get(0).offsetTop-$(".toc-article").height()/2;
-            $(".toc-article").css({
-                top:top +"px"
-            });
-            $("#toc").show(1000,function(){});
-           // $("#toc").animate({width:500;},3000);
-        },function(){
-
-        });
-        $(".toc-article").hover(function(){
-
-        },function(){
-            $("#toc").hide(1000,function(){});
-        });
-    })
-</script>
-
-                                                        
-                                                            
+                                                
                                                                 
-                                                                            <h3 id="&#x5347;&#x7EA7;&#x4F9D;&#x8D56;"><a href="#&#x5347;&#x7EA7;&#x4F9D;&#x8D56;" class="headerlink" title="&#x5347;&#x7EA7;&#x4F9D;&#x8D56;"></a>&#x5347;&#x7EA7;&#x4F9D;&#x8D56;</h3><figure class="highlight plain"><figcaption><span>i vue@next vuex@next vue-router@next --save ```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">### vue&#x5347;&#x7EA7; ###</div><div class="line">#### &#x4FEE;&#x6539;build/webpack.base.conf.js ####</div><div class="line">  &#x6DFB;&#x52A0;&#xFF1A;</div><div class="line">  ![20160904-vue2-01](use-vue2-0/20160904-vue2-01.png)</div><div class="line"></div><div class="line">&lt;!--more--&gt;</div><div class="line">#### &#x4FEE;&#x6539;main.js ####</div><div class="line">  vue2 &#x5EFA;&#x8BAE;&#x5C06;&#x5E94;&#x7528;&#x6302;&#x8F7D;&#x5230;&#x660E;&#x786E;&#x7684;html element&#xFF0C;&#x800C;&#x4E0D;&#x662F;html&#x6216;body&#x6807;&#x7B7E;&#x3002;</div><div class="line">  index.html:</div></pre></td></tr></table></figure>
-<p>  <body><br>    <div id="app"><br>      <app></app><br>    </div><br>  </body><br>  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">main</span><span class="selector-class">.js</span>: </div><div class="line">``` </div><div class="line"><span class="selector-tag">new</span> <span class="selector-tag">Vue</span>({</div><div class="line">  <span class="attribute">el</span>: <span class="string">&apos;#app&apos;</span>,</div><div class="line">  components: { App }</div><div class="line">})</div></pre></td></tr></table></figure></p>
-<h3 id="vuex&#x5347;&#x7EA7;"><a href="#vuex&#x5347;&#x7EA7;" class="headerlink" title="vuex&#x5347;&#x7EA7;"></a>vuex&#x5347;&#x7EA7;</h3><h4 id="&#x4FEE;&#x6539;action"><a href="#&#x4FEE;&#x6539;action" class="headerlink" title="&#x4FEE;&#x6539;action"></a>&#x4FEE;&#x6539;action</h4><blockquote>
-<p>Vuex 2.0 &#x4E2D;&#xFF0C;&#x5DF2;&#x5C06;&#x539F;&#x5148;&#x7684; store.dispatch &#x6539;&#x540D;&#x4E3A;&#x4E86; store.commit &#x6765;&#x89E6;&#x53D1; mutation&#x3002;<br>Vuex 2.0 &#x4E2D;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x79FB;&#x9664; store.dispatch&#xFF0C;&#x800C;&#x662F;&#x6539;&#x4E3A;&#x7528;&#x4E8E;&#x89E6;&#x53D1; action&#x3002;</p>
-</blockquote>
-<p>  actions.js:<br>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> increment = <span class="function"><span class="keyword">function</span> (<span class="params">{commit}</span>) </span>{</div><div class="line">  commit(<span class="string">&apos;increment&apos;</span>)</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<h4 id="&#x4FEE;&#x6539;vuex&#x8FDE;&#x63A5;&#x5230;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;"><a href="#&#x4FEE;&#x6539;vuex&#x8FDE;&#x63A5;&#x5230;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;" class="headerlink" title="&#x4FEE;&#x6539;vuex&#x8FDE;&#x63A5;&#x5230;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;"></a>&#x4FEE;&#x6539;vuex&#x8FDE;&#x63A5;&#x5230;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;</h4><p>  &#x5982;&#x56FE;&#xFF1A;<br>  <img src="/2016/09/04/use-vue2-0/20160904-vue2-02.png" alt="20160904-vue2-02"><br>  <img src="/2016/09/04/use-vue2-0/20160904-vue2-03.png" alt="20160904-vue2-03"></p>
-<h3 id="&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x6559;&#x7A0B;"><a href="#&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x6559;&#x7A0B;" class="headerlink" title="&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x6559;&#x7A0B;"></a>&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x6559;&#x7A0B;</h3><p><a href="http://www.jianshu.com/p/c440f17c0118" target="_blank" rel="external">Vue 2.0 &#x5347;&#xFF08;cai&#xFF09;&#x7EA7;&#xFF08;keng&#xFF09;&#x4E4B;&#x65C5;</a><br><a href="http://www.jianshu.com/p/4840131d87c9" target="_blank" rel="external">Vuex &#x2014;&#x2014; The core of Vue application</a></p>
-
-                                                                                
+                                                                    <h3 id="&#x5347;&#x7EA7;&#x4F9D;&#x8D56;"><a href="#&#x5347;&#x7EA7;&#x4F9D;&#x8D56;" class="headerlink" title="&#x5347;&#x7EA7;&#x4F9D;&#x8D56;"></a>&#x5347;&#x7EA7;&#x4F9D;&#x8D56;</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i vue<span class="variable">@next</span> vuex<span class="variable">@next</span> vue-router<span class="variable">@next</span> --save</div></pre></td></tr></table></figure>
+<h3 id="vue&#x5347;&#x7EA7;"><a href="#vue&#x5347;&#x7EA7;" class="headerlink" title="vue&#x5347;&#x7EA7;"></a>vue&#x5347;&#x7EA7;</h3><h4 id="&#x4FEE;&#x6539;build-webpack-base-conf-js"><a href="#&#x4FEE;&#x6539;build-webpack-base-conf-js" class="headerlink" title="&#x4FEE;&#x6539;build/webpack.base.conf.js"></a>&#x4FEE;&#x6539;build/webpack.base.conf.js</h4><p>  &#x6DFB;&#x52A0;&#xFF1A;<br>  <img src="/2016/09/04/use-vue2-0/20160904-vue2-01.png" alt="20160904-vue2-01"></p>
+                                                                        
                                         </div>
                                         
                                             <div class="article-info article-info-index">
@@ -270,6 +233,10 @@
                                                     
 
                                                         
+                                                            <p class="article-more-link">
+                                                                <a  href="/2016/09/04/use-vue2-0/#more">More >></a>
+                                                            </p>
+                                                            
                                                                 <div class="clearfix"></div>
                                             </div>
                                             
